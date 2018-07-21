@@ -42,7 +42,7 @@ $(function() {
                     // Grab S3 credentials using the bearer token
                     s3DemoGlobals.assumeRoleWithWebIdentity({
                         idToken: authResult.access_token,
-                        roleArn: "arn:aws:iam::196415354336:role/s3-serverless-uploads-role",
+                        roleArn: "arn:aws:iam::583763756569:role/FileUploader_Amazon",
                         providerId: "www.amazon.com"
                     });
 

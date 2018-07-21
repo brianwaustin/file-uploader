@@ -4,7 +4,7 @@
  * and asks AWS for new credentials before those expire.
  */
 $(function() {
-    var bucketUrl = "http://file-drop.cloudshock.io.s3.amazonaws.com",
+    var bucketUrl = "https://file-drop-cloudshock--io.s3.amazonaws.com",
         updateCredentials = function(error, data) {
             if (!error) {
                 $('#uploader').fineUploaderS3("setCredentials", s3DemoGlobals.getFuCredentials(data));
