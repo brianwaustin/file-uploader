@@ -43,7 +43,11 @@
   </script>
 
   <script>
-    var s3DemoGlobals = {};
+    var s3DemoGlobals = {
+      tenantId: 1234,
+      agentId: 6848,
+      description: "A sample description"
+    };
   </script>
   <link href="//netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
 
@@ -74,7 +78,7 @@
 
     <h2 class="demo-title">File Uploader</h2>
 
-    <!-- Only lods the content between the "if tags" if you are not running IE9 or older -->
+    <!-- Only loads the content between the "if tags" if you are not running IE9 or older -->
     <!--[if !IE | gt IE 9]> -->
     <!-- Required for the Amazon & Facebook JavaScript SDKs -->
     <div id="amazon-root"></div>
@@ -158,13 +162,7 @@
 
       <!-- Legal Info -->
       <div class="row">
-        <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 text-center padtop">
-            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
-              <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
-          </a>
-          <br />This work is licensed under a
-          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
-          
+        <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 text-center padtop">        
         </div>
         <!-- //.col -->
       </div>

@@ -15,8 +15,18 @@ $(function() {
         };
 
     $("#uploader").fineUploaderS3({
-        request: {
-            endpoint: bucketUrl
+        debug: true,
+        request: {            
+            endpoint: bucketUrl,
+            params: {
+                sourceType: "FileUploader",
+                uploadDate: function(){
+                   return (new Date()).toISOString.substring(0,19).replace('T', ' ') + "')";                    
+                },
+                tenantId: s3DemoGlobals.tenantId,
+                agentId: s3DemoGlobals.agentId,
+                description: s3DemoGlobals.descriptions
+            }
         },
         objectProperties: {
             // Since we want all items to be publicly accessible w/out a server to return a signed URL
@@ -27,7 +37,14 @@ $(function() {
                 var filename = this.getName(id),
                     uuid = this.getUuid(id);
 
-                return qq.format("{}/{}.{}", s3DemoGlobals.userName, uuid, qq.getExtension(filename));
+                /* Strip dashes from UID */
+                uuid = uuid.replace(new RegExp('-', 'g'), "");
+
+                /* Handle .jpegs */
+                var extension = qq.getExtension(filename).toLowerCase();
+                if(extension == "jpeg") extension="jpg";
+
+                return qq.format("{}/{}.{}", s3DemoGlobals.userName, uuid, extension);
             }
         },
         chunking: {
@@ -36,15 +53,27 @@ $(function() {
         resume: {
             enabled: true
         },
-        // Restrict files to 15 MB and 5 net files per session
+        /* Restrict file count and size (150 files, 99 Mb each) */
         validation: {
-            itemLimit: 5,
-            sizeLimit: 15000000
+            allowEmpty: false,
+            itemLimit: 1000,
+            sizeLimit: 99000000
+        },
+        retry: {
+            enabledAuto: false
         },
         thumbnails: {
             placeholders: {
                 notAvailablePath: "not_available-generic.png",
                 waitingPath: "waiting-generic.png"
+            }
+        },
+        callbacks:{
+            onManualRetry: function(id, name){
+                console.log("Retry: " + id + " name: " + name);
+            },
+            onComplete: function(succeeded, failed){
+                console.log("succeeded: " + succeeded.length + " failed: " + failed.length);
             }
         }
     })
