@@ -24,6 +24,9 @@ I built the Cloud Shock file uploader using the following tools:
   * Amazon Seller Central - Authentication
   * Google Identity Platform - Authentication
   * Facebook for developers - Authentication
+  
+## Demo ##
+Working demo can be found here [https://cloudshock.io/uploader/]
 
 ## Roadmap - What's Next?? ## 
 
