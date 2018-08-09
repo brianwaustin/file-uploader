@@ -26,7 +26,7 @@ I built the Cloud Shock file uploader using the following tools:
   * Facebook for developers - Authentication
   
 ## Demo ##
-Working demo can be found here [https://cloudshock.io/uploader/]
+Working demo can be found here https://cloudshock.io/uploader/
 
 ## Roadmap - What's Next?? ## 
 
